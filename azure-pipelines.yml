@@ -6,17 +6,20 @@ pool:
   demands:
     - Agent.Name -equals Muneer
 
-  vmImage: 'ubuntu-latest'
-
 variables:
-  acrName: 'mycontainerregistry788'
-  acrLoginServer: 'mycontainerregistry788.azurecr.io'
-
-steps:
-- task: Docker@2
-  inputs:
-    containerRegistry: 'ACR'
-    repository: 'mycontainerregistry788'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: 'latest'
+  # ACR service connection and registry details – update these to match your environment.
+  dockerRegistryServiceConnection: 'ACR'
+  dockerRegistry: 'mycontainerregistry788.azurecr.io'
+  tag: '$(Build.BuildId)'
+  
+  # Define image repository names for each service.
+  imageRepositoryCatalog: 'eshop/catalog-api'
+  imageRepositoryOrdering: 'eshop/ordering-api'
+  imageRepositoryBasket: 'eshop/basket-api'
+  imageRepositoryIdentity: 'eshop/identity-api'
+  imageRepositoryPayment: 'eshop/payment-api'
+  imageRepositoryWebhooks: 'eshop/webhooks-api'
+  imageRepositoryMobileBff: 'eshop/mobile-bff'
+  imageRepositoryWebBff: 'eshop/web-bff'
+stages:
+  - 

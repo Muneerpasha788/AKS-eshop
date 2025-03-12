@@ -53,7 +53,12 @@ RUN libman restore
 
 WORKDIR /src/Services/Identity/Identity.API
 RUN ls -la
-RUN dotnet publish Identity.API.csproj -c Release -o /app
+
+# Explicitly restore the Identity.API project (to ensure all dependencies are present)
+RUN dotnet restore Identity.API.csproj
+
+# Publish with explicit reference to the project file and add diagnostic verbosity
+RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
 
 FROM build AS publish
 

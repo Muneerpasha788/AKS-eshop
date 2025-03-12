@@ -47,9 +47,15 @@ COPY "NuGet.config" "NuGet.config"
 RUN dotnet restore "eShopOnContainers-ServicesAndWebApps.sln"
 
 COPY . .
+
+RUN dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+ENV PATH="$PATH:/root/.dotnet/tools"
+RUN libman restore
+
+
 WORKDIR /src/Services/Identity/Identity.API
 RUN ls -la
-RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app
+RUN dotnet publish Identity.API.csproj -c Release -o /app
 
 FROM build AS publish
 

@@ -48,13 +48,15 @@ COPY . .
 
 WORKDIR /src/Services/Identity/Identity.API
 
-# Combine installation of LibMan, restore, and publish in a single RUN command
+# Combine installation of LibMan, restore, and publish in a single RUN command.
+# The /p:SkipLibMan=true property will skip the LibMan restore target during publish,
+# avoiding the LIB002 errors.
 RUN ls -la && \
     dotnet tool install -g Microsoft.Web.LibraryManager.Cli && \
     export PATH="/root/.dotnet/tools:$PATH" && \
     libman restore && \
     dotnet restore Identity.API.csproj && \
-    dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
+    dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic /p:SkipLibMan=true
 
 FROM build AS publish
 

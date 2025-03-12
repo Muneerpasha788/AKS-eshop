@@ -34,7 +34,7 @@ steps:
   inputs:
     repository: '$(dockerRegistry)/$(imageRepositoryCatalog)'
     command: 'buildAndPush'
-    Dockerfile: 'eShopOnContainers/src/Services/Catalog/Catalog.API'
+    Dockerfile: 'eShopOnContainers/src/Services/Catalog/Catalog.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2

@@ -45,6 +45,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryOrdering)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Ordering/Ordering.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -54,6 +55,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryBasket)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Basket/Basket.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -63,6 +65,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryIdentity)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Identity/Identity.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -72,6 +75,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryPayment)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Payment/Payment.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -81,6 +85,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryWebhooks)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Webhooks/Webhooks.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -90,6 +95,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryMobileBff)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/ApiGateways/Mobile.Bff.Shopping/aggregator/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -99,4 +105,5 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryWebBff)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'

@@ -107,7 +107,7 @@ steps:
     tags: '$(tag)'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/eShopOnContainers/deploy/k8s/helm'
+    SourceFolder: '$(Build.SourcesDirectory)/eShopOnContainers/deploy'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1

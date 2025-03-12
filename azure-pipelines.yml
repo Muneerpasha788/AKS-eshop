@@ -65,7 +65,7 @@ steps:
     repository: '$(dockerRegistry)/$(imageRepositoryIdentity)'
     command: 'buildAndPush'
     Dockerfile: 'eShopOnContainers/src/Services/Identity/Identity.API/Dockerfile'
-    buildContext: 'eShopOnContainers/src'
+    buildContext: 'eShopOnContainers'
     tags: '$(tag)'
 
 - task: Docker@2

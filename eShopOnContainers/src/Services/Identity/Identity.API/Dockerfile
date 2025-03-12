@@ -46,19 +46,15 @@ RUN dotnet restore "eShopOnContainers-ServicesAndWebApps.sln"
 
 COPY . .
 
-# Install LibMan CLI and restore client-side libraries
-RUN dotnet tool install -g Microsoft.Web.LibraryManager.Cli
-ENV PATH="/root/.dotnet/tools:$PATH"
-RUN libman restore
-
 WORKDIR /src/Services/Identity/Identity.API
-RUN ls -la
 
-# Explicit restore for the Identity.API project
-RUN dotnet restore Identity.API.csproj
-
-# Publish with explicit reference to the project file and diagnostic verbosity
-RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
+# Combine installation of LibMan, restore, and publish in a single RUN command
+RUN ls -la && \
+    dotnet tool install -g Microsoft.Web.LibraryManager.Cli && \
+    export PATH="/root/.dotnet/tools:$PATH" && \
+    libman restore && \
+    dotnet restore Identity.API.csproj && \
+    dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
 
 FROM build AS publish
 

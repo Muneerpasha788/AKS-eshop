@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  name: 'default'
+  demands:
+    - Agent.Name -equals Muneer
+
+  vmImage: 'ubuntu-latest'
+
+variables:
+  acrName: 'mycontainerregistry788'
+  acrLoginServer: 'mycontainerregistry788.azurecr.io'
+
+steps:
+- task: Docker@2
+  inputs:
+    command: 'buildAndPush'
+    repository: '$(acrLoginServer)/catalog-api'
+    dockerfile: 'src/Services/Catalog/Catalog.API/Dockerfile'
+    containerRegistry: '$(acrName)'
+    tags: 'latest'

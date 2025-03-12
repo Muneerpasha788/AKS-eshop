@@ -48,7 +48,7 @@ COPY . .
 
 # Install LibMan CLI and restore client-side libraries
 RUN dotnet tool install -g Microsoft.Web.LibraryManager.Cli
-ENV PATH="$PATH:/root/.dotnet/tools"
+ENV PATH="/root/.dotnet/tools:$PATH"
 RUN libman restore
 
 WORKDIR /src/Services/Identity/Identity.API
@@ -57,9 +57,8 @@ RUN ls -la
 # Explicit restore for the Identity.API project
 RUN dotnet restore Identity.API.csproj
 
-# Inline export of PATH for LibMan and publish with diagnostic verbosity
-RUN export PATH="$PATH:/root/.dotnet/tools" && \
-    dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
+# Publish with explicit reference to the project file and diagnostic verbosity
+RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
 
 FROM build AS publish
 

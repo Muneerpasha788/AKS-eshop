@@ -34,7 +34,7 @@ steps:
   inputs:
     repository: '$(dockerRegistry)/$(imageRepositoryCatalog)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Catalog/Catalog.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Catalog/Catalog.API'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -43,7 +43,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryOrdering)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Ordering/Ordering.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Ordering/Ordering.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -52,7 +52,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryBasket)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Basket/Basket.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Basket/Basket.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -61,7 +61,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryIdentity)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Identity/Identity.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Identity/Identity.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -70,7 +70,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryPayment)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Payment/Payment.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Payment/Payment.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -79,7 +79,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryWebhooks)'
     command: 'buildAndPush'
-    Dockerfile: 'src/Services/Webhooks/Webhooks.API/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/Services/Webhooks/Webhooks.API/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -88,7 +88,7 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryMobileBff)'
     command: 'buildAndPush'
-    Dockerfile: 'src/ApiGateways/Mobile.Bff.Shopping/aggregator/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/ApiGateways/Mobile.Bff.Shopping/aggregator/Dockerfile'
     tags: '$(tag)'
 
 - task: Docker@2
@@ -97,5 +97,5 @@ steps:
     containerRegistry: 'ACR'
     repository: '$(dockerRegistry)/$(imageRepositoryWebBff)'
     command: 'buildAndPush'
-    Dockerfile: 'src/ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile'
+    Dockerfile: 'eShopOnContainers/src/ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile'
     tags: '$(tag)'

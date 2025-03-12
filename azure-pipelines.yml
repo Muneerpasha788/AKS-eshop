@@ -15,8 +15,8 @@ variables:
 steps:
 - task: Docker@2
   inputs:
+    containerRegistry: 'ACR'
+    repository: 'mycontainerregistry788'
     command: 'buildAndPush'
-    repository: '$(acrLoginServer)/catalog-api'
-    dockerfile: 'src/Services/Catalog/Catalog.API/Dockerfile'
-    containerRegistry: '$(acrName)'
+    Dockerfile: '**/Dockerfile'
     tags: 'latest'

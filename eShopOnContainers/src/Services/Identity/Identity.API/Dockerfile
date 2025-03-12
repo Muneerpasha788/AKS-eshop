@@ -48,7 +48,8 @@ RUN dotnet restore "eShopOnContainers-ServicesAndWebApps.sln"
 
 COPY . .
 WORKDIR /src/Services/Identity/Identity.API
-RUN dotnet publish --no-restore -c Release -o /app
+RUN ls -la
+RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app
 
 FROM build AS publish
 

@@ -5,8 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 
-# It's important to keep lines from here down to "COPY . ." identical in all Dockerfiles
-# to take advantage of Docker's build cache, to speed up local container builds
+# Copy solution and project files (using paths relative to build context)
 COPY "eShopOnContainers-ServicesAndWebApps.sln" "eShopOnContainers-ServicesAndWebApps.sln"
 COPY "Services/Identity/Identity.API/Identity.API.csproj" "Services/Identity/Identity.API/Identity.API.csproj"
 
@@ -41,17 +40,16 @@ COPY "Web/WebSPA/WebSPA.csproj" "Web/WebSPA/WebSPA.csproj"
 COPY "Web/WebStatus/WebStatus.csproj" "Web/WebStatus/WebStatus.csproj"
 
 COPY "docker-compose.dcproj" "docker-compose.dcproj"
-
 COPY "NuGet.config" "NuGet.config"
 
 RUN dotnet restore "eShopOnContainers-ServicesAndWebApps.sln"
 
 COPY . .
 
+# Install LibMan CLI and restore client-side libraries
 RUN dotnet tool install -g Microsoft.Web.LibraryManager.Cli
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN libman restore
-
 
 WORKDIR /src/Services/Identity/Identity.API
 RUN ls -la
@@ -61,5 +59,5 @@ FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=publish /app ./
 ENTRYPOINT ["dotnet", "Identity.API.dll"]

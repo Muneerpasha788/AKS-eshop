@@ -54,11 +54,12 @@ RUN libman restore
 WORKDIR /src/Services/Identity/Identity.API
 RUN ls -la
 
-# Explicitly restore the Identity.API project (to ensure all dependencies are present)
+# Explicit restore for the Identity.API project
 RUN dotnet restore Identity.API.csproj
 
-# Publish with explicit reference to the project file and add diagnostic verbosity
-RUN dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
+# Inline export of PATH for LibMan and publish with diagnostic verbosity
+RUN export PATH="$PATH:/root/.dotnet/tools" && \
+    dotnet publish Identity.API.csproj --no-restore -c Release -o /app --verbosity diagnostic
 
 FROM build AS publish
 

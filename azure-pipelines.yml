@@ -10,7 +10,7 @@ variables:
   # ACR service connection and registry details – update these to match your environment.
   dockerRegistryServiceConnection: 'ACR'
   dockerRegistry: 'mycontainerregistry788.azurecr.io'
-  tag: '$(Build.BuildId)'
+  tag: '111'
   
   # Define image repository names for each service.
   imageRepositoryCatalog: 'eshop/catalog-api'

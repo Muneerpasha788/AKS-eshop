@@ -59,16 +59,6 @@ steps:
     tags: '$(tag)'
 
 - task: Docker@2
-  displayName: 'Build and Push Identity.API'
-  inputs:
-    containerRegistry: 'ACR'
-    repository: '$(dockerRegistry)/$(imageRepositoryIdentity)'
-    command: 'buildAndPush'
-    Dockerfile: 'eShopOnContainers/src/Services/Identity/Identity.API/Dockerfile'
-    buildContext: 'eShopOnContainers/src'
-    tags: '$(tag)'
-
-- task: Docker@2
   displayName: 'Build and Push Payment.API'
   inputs:
     containerRegistry: 'ACR'
@@ -77,7 +67,15 @@ steps:
     Dockerfile: 'eShopOnContainers/src/Services/Payment/Payment.API/Dockerfile'
     buildContext: 'eShopOnContainers/src'
     tags: '$(tag)'
-
+- task: Docker@2
+  displayName: 'Build and Push Identity.API'
+  inputs:
+    containerRegistry: 'ACR'
+    repository: '$(dockerRegistry)/$(imageRepositoryIdentity)'
+    command: 'buildAndPush'
+    Dockerfile: 'eShopOnContainers/src/Services/Identity/Identity.API/Dockerfile'
+    buildContext: 'eShopOnContainers/src'
+    tags: '$(tag)'
 - task: Docker@2
   displayName: 'Build and Push Webhooks.API'
   inputs:

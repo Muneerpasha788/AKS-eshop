@@ -1,0 +1,74 @@
+apiVersion: v2
+name: eshop-on-containers
+description: An umbrella chart for eShopOnContainers microservices
+version: 1.0.0
+dependencies:
+  - name: apigwms
+    version: 1.0.0
+    repository: "file://charts/apigwms"
+  - name: apigwws
+    version: 1.0.0
+    repository: "file://charts/apigwws"
+  - name: basket-api
+    version: 1.0.0
+    repository: "file://charts/basket-api"
+  - name: basket-data
+    version: 1.0.0
+    repository: "file://charts/basket-data"
+  - name: catalog-api
+    version: 1.0.0
+    repository: "file://charts/catalog-api"
+  - name: eshop-common
+    version: 1.0.0
+    repository: "file://charts/eshop-common"
+  - name: identity-api
+    version: 1.0.0
+    repository: "file://charts/identity-api"
+  - name: keystore-data
+    version: 1.0.0
+    repository: "file://charts/keystore-data"
+  - name: mobileshoppingagg
+    version: 1.0.0
+    repository: "file://charts/mobileshoppingagg"
+  - name: nosql-data
+    version: 1.0.0
+    repository: "file://charts/nosql-data"
+  - name: ordering-api
+    version: 1.0.0
+    repository: "file://charts/ordering-api"
+  - name: ordering-backgroundtasks
+    version: 1.0.0
+    repository: "file://charts/ordering-backgroundtasks"
+  - name: ordering-signalrhub
+    version: 1.0.0
+    repository: "file://charts/ordering-signalrhub"
+  - name: payment-api
+    version: 1.0.0
+    repository: "file://charts/payment-api"
+  - name: rabbitmq
+    version: 1.0.0
+    repository: "file://charts/rabbitmq"
+  - name: sql-data
+    version: 1.0.0
+    repository: "file://charts/sql-data"
+  - name: tls-support
+    version: 1.0.0
+    repository: "file://charts/tls-support"
+  - name: webhooks-api
+    version: 1.0.0
+    repository: "file://charts/webhooks-api"
+  - name: webhooks-web
+    version: 1.0.0
+    repository: "file://charts/webhooks-web"
+  - name: webmvc
+    version: 1.0.0
+    repository: "file://charts/webmvc"
+  - name: webshoppingagg
+    version: 1.0.0
+    repository: "file://charts/webshoppingagg"
+  - name: webspa
+    version: 1.0.0
+    repository: "file://charts/webspa"
+  - name: webstatus
+    version: 1.0.0
+    repository: "file://charts/webstatus"

@@ -1,0 +1,75 @@
+global:
+  image:
+    repository: myacr.azurecr.io/eshop
+    tag: latest
+  sql:
+    connectionString: "Server=tcp:aks-sqlserver.database.windows.net,1433;Initial Catalog=eShopOnContainers;Persist Security Info=False;User ID=sqladmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+apigwms:
+  enabled: true
+
+apigwws:
+  enabled: true
+
+basket-api:
+  enabled: true
+
+basket-data:
+  enabled: true
+
+catalog-api:
+  enabled: true
+
+eshop-common:
+  enabled: true
+
+identity-api:
+  enabled: true
+
+keystore-data:
+  enabled: true
+
+mobileshoppingagg:
+  enabled: true
+
+nosql-data:
+  enabled: true
+
+ordering-api:
+  enabled: true
+
+ordering-backgroundtasks:
+  enabled: true
+
+ordering-signalrhub:
+  enabled: true
+
+payment-api:
+  enabled: true
+
+rabbitmq:
+  enabled: true
+
+sql-data:
+  enabled: true
+
+tls-support:
+  enabled: true
+
+webhooks-api:
+  enabled: true
+
+webhooks-web:
+  enabled: true
+
+webmvc:
+  enabled: true
+
+webshoppingagg:
+  enabled: true
+
+webspa:
+  enabled: true
+
+webstatus:
+  enabled: true
